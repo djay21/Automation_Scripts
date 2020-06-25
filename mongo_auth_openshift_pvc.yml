@@ -1,0 +1,107 @@
+kind: Template
+apiVersion: template.openshift.io/v1
+metadata:
+  name: pvc-template
+  annotations:
+    description: Description
+objects:
+  - Raw: '1'
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: '${PVC_NAME_MONGO}'
+      labels:
+        app: '${APP_NAME}'
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: csi-cephfs
+      volumeMode: Filesystem    
+  - Raw: '1'
+    apiVersion: apps.openshift.io/v1
+    kind: DeploymentConfig
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        app: '${APP_NAME}'
+      name: '${PVC_NAME_MONGO}'
+    spec:
+      replicas: 1
+      selector:
+        app: '${APP_NAME}'
+        deploymentconfig: '${PVC_NAME_MONGO}'
+      strategy:
+        type: Recreate
+        resources: {}
+      template:
+        metadata:
+          annotations:
+            openshift.io/generated-by: OpenShiftNewApp
+          creationTimestamp: null
+          labels:
+            app: '${APP_NAME}'
+            deploymentconfig: '${PVC_NAME_MONGO}'
+        spec:
+          containers:
+            - image: 'mongo:4.2'
+              name: '${PVC_NAME_MONGO}'
+              ports:
+                - containerPort: 27017
+                  protocol: TCP
+              resources: {}
+              env:
+                - name: MONGO_INITDB_ROOT_USERNAME
+                  value: mongodb
+                - name: MONGO_INITDB_ROOT_PASSWORD
+                  value: mongodb
+              volumeMounts:
+                - mountPath: /data/db
+                  name: '${PVC_NAME_MONGO}'
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          volumes:
+            - name: '${PVC_NAME_MONGO}'
+              persistentVolumeClaim:
+                claimName: '${PVC_NAME_MONGO}'
+      test: false
+  - Raw: '1'
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: '${APP_NAME}'
+      name: '${PVC_NAME_MONGO}'
+    spec:
+      ports:
+        - name: 27017-tcp
+          port: 27017
+          protocol: TCP
+          targetPort: 27017
+      selector:
+        app: '${APP_NAME}'
+        deploymentconfig: '${PVC_NAME_MONGO}'
+    status:
+      loadBalancer: {}
+parameters:
+  - name: PVC_NAME_MONGO
+    displayName: PVC MONGO NAME
+    description: pvc name
+    value: monpvc
+    required: true
+  - name: APP_NAME
+    displayName: APPLICATION NAME
+    description: Application name
+    value: devops-bat
+    required: true
+labels:
+  redis: master
+  
+  
+#oc process -f pvc.yml -p APP_NAME=pvc-setup -p PVC_NAME_MONGO=mongo-$tagname | oc create -f -
+
+
