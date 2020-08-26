@@ -16,3 +16,8 @@ mongorestore --host hostname -p 27017 -u adminuser -p pass --authenticationDatab
 
 #Running bash file directly from the github
 wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ngrok_setup.sh | sudo bash 
+
+
+#git proxy 
+git config --global --add http.proxy http://no.psld.cosdkp.sd:8080/
+git config --global --add https.proxy http://no.cskd.drp.dsj:8080/
