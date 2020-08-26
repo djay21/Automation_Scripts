@@ -14,3 +14,5 @@ mongodump --host 127.0.0.1 -d development --port 27017 --username user --passwor
 
 mongorestore --host hostname -p 27017 -u adminuser -p pass --authenticationDatabase admin -d development /Data/TargetDatabaseRestore
 
+#Running bash file directly from the github
+wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ngrok_setup.sh | sudo bash 
