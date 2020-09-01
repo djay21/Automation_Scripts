@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-
 os=$(hostnamectl | grep Operating)
+echo "******************************************"
+echo $os
 
 if [[ $os == *"Ubuntu"* ]]; 
 then 
