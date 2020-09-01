@@ -3,7 +3,8 @@
 
 
 os=$(hostnamectl | grep Operating)
-if [[ $cc == *"Ubuntu"* ]]; 
+
+if [[ $os == *"Ubuntu"* ]]; 
 then 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
