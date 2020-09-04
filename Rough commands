@@ -1,0 +1,1 @@
+find . -type f | xargs sed -i  's/a\.example\.com/b.example.com/g'
