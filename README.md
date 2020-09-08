@@ -5,3 +5,7 @@ wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/doc
 
 <h4> GRAFANA INSTALLATION </h4>
 wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/grafana_installation.sh | sudo bash <br> <br>
+
+
+<h4> MONGO INSTALLATION </h4>
+wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mongo_installation.sh | sudo bash <br> <br>
