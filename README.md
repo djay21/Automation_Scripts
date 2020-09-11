@@ -9,3 +9,6 @@ wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/gra
 
 <h4> MONGO INSTALLATION </h4>
 wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mongo_installation.sh | sudo bash <br> <br>
+
+<h4> ALIAS SETUP </h4>
+wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/alias.sh | sudo bash <br> <br>
