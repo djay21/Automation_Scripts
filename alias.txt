@@ -1,9 +1,7 @@
-cat <<EOT >> ~/.bashrc
 alias pp='docker ps -a'
 alias im='docker images -a'
-function logs() { docker logs -f "$1" }
-function up() { docker-compose up -d }
+alias up='docker-compose up -d'
+alias logs="docker logs -f ${1}"
+alias mango='docker run -p 8990:27017 -d mongo'
 function exe() { docker exec -it "$1" /bin/bash ;}
 function builder() { docker build -t "$1" . ;}
-EOT
-source ~/.bashrc
