@@ -1,7 +1,12 @@
+alias rc='nano ~/.bashrc'
+alias sc='source ~/.bashrc'
 alias pp='docker ps -a'
 alias im='docker images -a'
 alias up='docker-compose up -d'
 alias logs="docker logs -f ${1}"
+alias ddu='docker-compose up -d"
+alias ddd='docker-compose down'
+alias ddb='docker-compose up --build -d'
 alias mango='docker run -p 8990:27017 -d mongo'
 function exe() { docker exec -it "$1" /bin/bash ;}
 function builder() { docker build -t "$1" . ;}
