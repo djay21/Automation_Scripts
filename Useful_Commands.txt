@@ -1,5 +1,5 @@
 #changing value in directories and subdirectories
-find ./ -type f -exec sed -i -e 's/10.135.0.29/noi3.proxy.corp.sopra/g' {} \;
+find ./ -type f -exec sed -i -e 's/10.135.10.129/nstel/g' {} \;
 
 #setting proxy to npm mirrors to download packages over proxy 
 npm config set proxy http://proxy_host:port
