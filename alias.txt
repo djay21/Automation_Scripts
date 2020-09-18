@@ -1,5 +1,7 @@
 alias rc='nano ~/.bashrc'
 alias sc='source ~/.bashrc'
+alias cls='clear'
+alias ls='ls -lrt'
 alias pp='docker ps -a || sudo docker ps -a'
 alias im='docker images -a || sudo docker images -a'
 alias up='docker-compose up -d || sudo docker-compose up -d'
