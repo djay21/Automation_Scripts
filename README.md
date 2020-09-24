@@ -12,3 +12,8 @@ wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mon
 
 <h4> ALIAS SETUP </h4>
 wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/alias.sh | bash <br> <br>
+
+<h4> PORTAINER SETUP </h4>
+wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/Portainer.sh | bash -x <br> <br>
+
+
