@@ -13,6 +13,7 @@ alias build='docker-compose up --build -d || sudo docker-compose up --build -d'
 HISTTIMEFORMAT="%F %T: "
 alias mango='docker run -p 8990:27017 -d mongo || sudo docker run -p 8990:27017 -d mongo'
 
+
 #console into docker containers
 function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bin/bash ;}
 
@@ -21,22 +22,8 @@ function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bi
 function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .;}
 
 
-#portainer installation
-function portainer() {
-apt install figlet -y && figlet Portainer Installation
-apt install apache2-utils -y
-read -p "\n\nEnter your password: " pass
-echo -e "\nPortainer Password is ${pass}"
-password=$(htpasswd -nb -B admin ${pass} | cut -d ":" -f 2)
-echo "Encrypted password is : $password"
-docker run -d -p 6060:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password} || sudo docker run -d -p 8004:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password}
-echo -e "echo -e "\n \n Portainer is running on port 6060................ "
-}
 
-function grafana() {
-apt install figlet -y && figlet Grafana Installation
-git clone https://github.com/djay21/Grafana-Monitoring.git
-cd Grafana-Monitoring 
-docker-compose up -d || sudo docker-compose up -d
-echo -e "echo -e "\n \n Grafana is running on port 6003................ "
-}
+#portainer installation
+function portainer() { apt install figlet -y && figlet Portainer Installation && apt install apache2-utils -y && read -p "\n\nEnter your password: " pass && echo -e "\nPortainer Password is ${pass}" && password=$(htpasswd -nb -B admin ${pass} | cut -d ":" -f 2) && echo "Encrypted password is : $password" && docker run -d -p 6060:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password} || sudo docker run -d -p 8004:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password} && echo -e "\n \n Portainer is running on port 6060................ " }
+
+function grafana() { apt install figlet -y && figlet Grafana Installation && git clone https://github.com/djay21/Grafana-Monitoring.git && cd Grafana-Monitoring && docker-compose up -d || sudo docker-compose up -d && echo -e "\n \n Grafana is running on port 6003................ " }
