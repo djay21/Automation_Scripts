@@ -19,7 +19,10 @@ function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bi
 
 
 #image building 
-function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .;}
+function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .; }
+
+#setting proxy
+function proxy() { wget -O proxy.sh https://raw.githubusercontent.com/djay21/Automation_Scripts/master/proxy_setup.sh && bash proxy.sh && rm -rf proxy.sh ; }
 
 
 
