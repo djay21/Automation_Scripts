@@ -6,6 +6,7 @@ alias pp='docker ps -a || sudo docker ps -a'
 alias im='docker images -a || sudo docker images -a'
 alias up='docker-compose up -d || sudo docker-compose up -d'
 alias logs="docker logs -f ${1} || sudo docker logs -f ${1}"
+alias logs="docker restart ${1} || sudo docker restart ${1}"
 alias imd="docker rmi -f $(docker images -aq)"
 alias psd="docker rm -f $(docker ps -aq)"
 alias prune="docker system prune || sudo docker system prune"
