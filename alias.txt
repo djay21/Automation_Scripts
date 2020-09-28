@@ -19,6 +19,7 @@ alias mango='docker run -p 8990:27017 -d mongo || sudo docker run -p 8990:27017 
 function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bin/bash ;}
 
 function dockerinstall() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/docker_installation.sh | sudo bash }
+function mongoinstall() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mongo_installation.sh | bash }
 
 
 #image building 
