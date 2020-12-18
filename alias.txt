@@ -13,6 +13,11 @@ alias down='docker-compose down || sudo docker-compose down'
 alias build='docker-compose up --build -d || sudo docker-compose up --build -d'
 HISTTIMEFORMAT="%F %T: "
 alias mango='docker run -p 8990:27017 -d mongo || sudo docker run -p 8990:27017 -d mongo'
+alias dockly='docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock deployerr/dockly'
+
+
+
+function update() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/alias.sh | bash; }
 
 
 #console into docker containers
@@ -20,7 +25,7 @@ function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bi
 
 function installdocker() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/docker_installation.sh | sudo bash ; }
 function installmongo() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mongo_installation.sh | bash; }
-
+function installnode() { curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - ;sudo apt-get install -y nodejs ; curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash ;}
 
 #image building 
 function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .; }
