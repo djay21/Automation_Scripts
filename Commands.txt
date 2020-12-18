@@ -5,6 +5,16 @@ find ./ -type f -exec sed -i -e 's/10.135.10.129/nstel/g' {} \;
 npm config set proxy http://proxy_host:port
 npm config set https-proxy https://proxy.company.com:8080
 
+
+
+#git proxy 
+git config --global --add http.proxy http://no.psld.cosdkp.sd:8080/
+git config --global --add https.proxy http://no.cskd.drp.dsj:8080/
+
+#exporting proxy
+export http_proxy=http://proxy.com:8080/
+export https_proxy=http://proxy.com:8080/
+
 #curl command for token passing to next request 
 json=$(curl -X POST   https://example.com/token   -H 'cache-control: no-cache'   -H 'content-type: application/x-www-form-urlencoded' -d 'username=developer&grant_type=password') && token=$( jq -r ".access_token" <<<"$json" ) && curl -X GET   https://example.com/users   -H "authorization: Bearer $token"   -H 'cache-control: no-cache'   -H 'content-type: application/json'
 
@@ -16,8 +26,3 @@ mongorestore --host hostname -p 27017 -u adminuser -p pass --authenticationDatab
 
 #Running bash file directly from the github
 wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ngrok_setup.sh | sudo bash 
-
-
-#git proxy 
-git config --global --add http.proxy http://no.psld.cosdkp.sd:8080/
-git config --global --add https.proxy http://no.cskd.drp.dsj:8080/
