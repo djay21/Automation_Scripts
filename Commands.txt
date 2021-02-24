@@ -26,3 +26,47 @@ mongorestore --host hostname -p 27017 -u adminuser -p pass --authenticationDatab
 
 #Running bash file directly from the github
 wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ngrok_setup.sh | sudo bash 
+
+
+
+
+
+#creating repo for elastic snapshots
+
+curl --location --request PUT 'https://backup-els-smartify.apps.ocp4.innershift.sodigital.io/_snapshot/my_backup' \
+--header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: 26c3f8e61daef0389d126d918b028688=300a8adb7a2b74c992483fe55eb1761a' \
+--data-raw '{
+"type":"fs",
+"settings" : {
+"compress" : true,
+"location" : "/app/es-backup"
+}
+}'
+
+
+
+#creating snapshots
+
+curl -k --location --request PUT "http://elasticsearch:9200/_snapshot/smartsearch_backup/${backupname}?wait_for_completion=true" \
+--header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"ignore_unavailable": true,
+"include_global_state": false,
+"metadata": {
+"taken_by": "Elastic pod ",
+"taken_because": "Schuduled backup"
+}
+}'
+
+
+
+#to restore elastic search data from snapshots
+curl --location --request POST 'https://backup-els-smartify.apps.ocp4.innershift.sodigital.io/_snapshot/my_backup/test_snap/_restore' \
+--header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj'
+
+
+#to delete snaoshot
+curl -k -X DELETE 'http://elasticsearch:9200/_snapshot/smartsearch_backup' --header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj
