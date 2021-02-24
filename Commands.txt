@@ -62,6 +62,10 @@ curl -k --location --request PUT "http://elasticsearch:9200/_snapshot/smartsearc
 }'
 
 
+#to list snapshots
+curl --location --request GET 'https://backup-els-smartify.apps.ocp4.innershift.sodigital.io/_snapshot/_all' \
+--header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj'
+
 
 #to restore elastic search data from snapshots
 curl --location --request POST 'https://backup-els-smartify.apps.ocp4.innershift.sodigital.io/_snapshot/my_backup/test_snap/_restore' \
