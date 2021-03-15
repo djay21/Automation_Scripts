@@ -12,6 +12,6 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 
 #start mongo on start up 
-sudo systemctl enable mongod
+#sudo systemctl enable mongod
 
-exit 0
+#exit 0
