@@ -29,6 +29,10 @@ wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ng
 
 
 
+# clean up the buffer space in RAM
+free -h && sync && echo 3 > /proc/sys/vm/drop_caches && free -h
+
+
 
 
 #creating repo for elastic snapshots
