@@ -33,6 +33,16 @@ wget -O - https://raw.githubusercontent.com/djay21/ngrok-client-config/master/ng
 free -h && sync && echo 3 > /proc/sys/vm/drop_caches && free -h
 
 
+#To free pagecache:
+echo 1 > /proc/sys/vm/drop_caches
+
+#To free dentries and inodes:
+echo 2 > /proc/sys/vm/drop_caches
+
+#To free pagecache, dentries and inodes:
+echo 3 > /proc/sys/vm/drop_caches
+
+
 
 
 #creating repo for elastic snapshots
