@@ -88,3 +88,15 @@ curl --location --request POST 'https://backup-els-smartify.apps.ocp4.innershift
 
 #to delete snaoshot
 curl -k -X DELETE 'http://elasticsearch:9200/_snapshot/smartsearch_backup' --header 'Authorization: Basic ZWxhc3RpYzpTU0BlbGFzdGlj
+
+
+
+
+#create folder date wise batch script 
+for /f "skip=1" %%i in ('wmic os get localdatetime') do if not defined fulldate set fulldate=%%i
+set year=%fulldate:~0,4%
+set month=%fulldate:~4,2%
+set day=%fulldate:~6,2%
+set foldername=%year%.%month%.%day%
+mkdir %foldername%
+cd  %foldername%
