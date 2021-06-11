@@ -1,7 +1,15 @@
+
 find . -type f | xargs sed -i  's/a\.example\.com/b.example.com/g'
+
+# delete file by inode number 
+ls -li
+find . -inum 4063242 -delete
+
 oc get dc | awk '{print $1,$5}' |awk '{$1 = sprintf("%-30s", $1)} 1' | sed -e "s/config\,image//g" | sed -e "s/TRIGGERED/IMAGE\:TAG/g" | sed -e "s/NAME/POD_NAME/g"
 
 systemctl list-unit-files | grep enabled
 
 #host location in windows
 C:\Windows\System32\drivers\etc\hosts
+
+
