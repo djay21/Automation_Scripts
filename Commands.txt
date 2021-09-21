@@ -100,3 +100,8 @@ set day=%fulldate:~6,2%
 set foldername=%year%.%month%.%day%
 mkdir %foldername%
 cd  %foldername%
+
+#gcloud ssh login
+gcloud beta compute ssh --zone “us-central1-a” “neo4j-snapshot” --project “brain-bold” --ssh-key-file=~/.ssh/id_rsa
+gcloud beta compute ssh --zone “northamerica-northeast1-a” “memcache-test” --project “bold-operations” --internal-ip
+gcloud compute ssh --internal-ip --ssh-key-file=~/.ssh/id_rsa --zone=northamerica-northeast1-a --project=bold-operations ansible-tf
