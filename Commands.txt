@@ -102,6 +102,17 @@ mkdir %foldername%
 cd  %foldername%
 
 #gcloud ssh login
-gcloud beta compute ssh --zone “us-central1-a” “neo4j-snapshot” --project “brain-bold” --ssh-key-file=~/.ssh/id_rsa
-gcloud beta compute ssh --zone “northamerica-northeast1-a” “memcache-test” --project “bold-operations” --internal-ip
-gcloud compute ssh --internal-ip --ssh-key-file=~/.ssh/id_rsa --zone=northamerica-northeast1-a --project=bold-operations ansible-tf
+gcloud beta compute ssh --zone “us-central1-a” "snap" --project “brain-bold” --ssh-key-file=~/.ssh/id_rsa
+gcloud beta compute ssh --zone “northamerica-northeast1-a” “cachetest” --project “bold-ops” --internal-ip
+gcloud compute ssh --internal-ip --ssh-key-file=~/.ssh/id_rsa --zone=northamerica-northeast1-a --project=bold ansible-tf
+
+# rpm gpg keys
+If you have access to the GPG public key, you can use the following command to manually import a key:
+$ rpm --import RPM-GPG-KEY-EPEL-8 
+Use the following command to list the keys:
+$ rpm -qa gpg-pubkey*
+gpg-pubkey-7fac5991-4615767f
+Use this command to get the information on a key:
+$ rpm -qi gpg-pubkey-2f86d6a1-5cf7cefb
+The following command is used to remove a key:
+$ sudo rpm -e gpg-pubkey-2f86d6a1-5cf7cefb
