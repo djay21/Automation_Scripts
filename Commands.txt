@@ -116,3 +116,9 @@ Use this command to get the information on a key:
 $ rpm -qi gpg-pubkey-2f86d6a1-5cf7cefb
 The following command is used to remove a key:
 $ sudo rpm -e gpg-pubkey-2f86d6a1-5cf7cefb
+
+##### EPEL repo centos
+https://www.centos.org/keys/RPM-GPG-KEY-CentOS-Official
+https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+https://www.redhat.com/sysadmin/rpm-gpg-verify-packages
+#####
