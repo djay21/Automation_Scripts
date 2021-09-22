@@ -122,3 +122,8 @@ https://www.centos.org/keys/RPM-GPG-KEY-CentOS-Official
 https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 https://www.redhat.com/sysadmin/rpm-gpg-verify-packages
 #####
+
+
+
+#host file location in windows 
+C:\Windows\System32\drivers\etc\hosts
