@@ -127,3 +127,10 @@ https://www.redhat.com/sysadmin/rpm-gpg-verify-packages
 
 #host file location in windows 
 C:\Windows\System32\drivers\etc\hosts
+
+
+lifecycle:
+            postStart/preStop:
+              exec:
+                command: ["/bin/sh", "-c", {{cmd}}]
+                
