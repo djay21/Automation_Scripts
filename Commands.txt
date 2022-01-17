@@ -134,3 +134,11 @@ lifecycle:
               exec:
                 command: ["/bin/sh", "-c", {{cmd}}]
                 
+
+#disabling host checking
+In your ~/.ssh/config (if this file doesn't exist, just create it):
+
+Host *
+    StrictHostKeyChecking no
+
+#for one host :   ssh -o StrictHostKeyChecking=no yourHardenedHost.com
