@@ -11,6 +11,19 @@ npm config set https-proxy https://proxy.company.com:8080
 git config --global --add http.proxy http://no.psld.cosdkp.sd:8080/
 git config --global --add https.proxy http://no.cskd.drp.dsj:8080/
 
+
+#Cloning git code quietly without output
+git clone --quiet ssh://XXXXXXX:29418/git_performance_check > /dev/null
+
+#updating fork with latst code 
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+$ git fetch upstream
+or 
+$ git merge upstream/master master
+$ git rebase upstream/master
+
+
+
 #exporting proxy
 export http_proxy=http://proxy.com:8080/
 export https_proxy=http://proxy.com:8080/
