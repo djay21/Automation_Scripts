@@ -136,6 +136,17 @@ https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 https://www.redhat.com/sysadmin/rpm-gpg-verify-packages
 #####
 
+curl --location --request POST 'http://localhost:8000/insert' \
+--header 'Content-Type: application/json' \
+--data-raw '{ \
+    "job_build_number":"'"$BUILD_NUMBER"'", \
+    "job_name": "'"$JOB_NAME"'", \
+    "cicd_env": "'"$BUILD_ENVIRONMENT"'", \
+    "timestamp": "'"$BUILD_TIMESTAMP"'", \
+    "build_link": "'"$BUILD_URL"'", \
+    "log_file_location": "./abc.txt" \
+}'
+
 
 
 #host file location in windows 
