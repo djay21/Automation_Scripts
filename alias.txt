@@ -14,27 +14,45 @@ alias build=' if [ $# -eq 0 ];then docker-compose up -d --build || sudo docker-c
 HISTTIMEFORMAT="%F %T: "
 alias mango='docker run -p 8990:27017 -d mongo || sudo docker run -p 8990:27017 -d mongo'
 alias dockly='docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock deployerr/dockly'
+alias ns='kubectl config set-context --current --namespace=$1'
+alias poa='kubectl get pods -A'
+alias po='kubectl get pods'
+alias svc='kubectl get svc'
+alias po='kc get pods'
+alias de='kc get deployments'
+alias des='kc describe'
+alias zz='nano ~/.zshrc'
+alias ss='source ~/.zshrc'
+alias init='terraform init'
+alias initc='terraform init -reconfigure'
+alias tp='terraform plan'
+alias plan="echo terraform plan -no-color > $1-plan.txt"
+alias tfm='terraform fmt -recursive'
+alias tv='terraform validate'
+alias taa='terraform apply -auto-approve'
+alias ta='terraform apply'
+alias tdd='terraform destroy -auto-approve'
+alias python='python3'
+alias ip='curl -s ipinfo.io |grep -w ip'
 
+alias kc="kubectl"
 
+alias tf='terraform'
+alias login="ssh -o StrictHostKeyChecking=no admin@$1"
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+alias gx="git add . && git commit -m $1 && git push"
+alias http='http-server -p 80'
 
 function update() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/alias.sh | bash; }
-
-
 #console into docker containers
 function exe() { docker exec -it "$1" /bin/bash || sudo docker exec -it "$1" /bin/bash ;}
-
 function installdocker() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/docker_installation.sh | sudo bash ; }
 function installmongo() { wget -O - https://raw.githubusercontent.com/djay21/Automation_Scripts/master/mongo_installation.sh | bash; }
 function installnodeubuntu() { curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - ;sudo apt-get install -y nodejs ; curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash ;}
 function installnodecentos() { curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash - ; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash ; }
 
-
-
-
 function installoc() { wget https://downloads-openshift-console.apps.ocp4.innershift.sodigital.io/amd64/linux/oc.tar &&  tar -xvf oc.tar && mv oc /usr/bin/ ; }
-
-
-
 
 #image building 
 function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .; }
@@ -42,9 +60,7 @@ function builder() { docker build -t "$1" .  || sudo docker build -t "$1" .; }
 #setting proxy
 function proxy() { wget -O proxy.sh https://raw.githubusercontent.com/djay21/Automation_Scripts/master/proxy_setup.sh && bash proxy.sh && rm -rf proxy.sh ; }
 
-
-
 #portainer installation
 function portainer() { apt install figlet -y || sudo apt install figlet -y && figlet Portainer Installation && apt install apache2-utils -y || sudo apt install apache2-utils -y && read -p "\n\nEnter your password: " pass && echo -e "\nPortainer Password is ${pass}" && password=$(htpasswd -nb -B admin ${pass} | cut -d ":" -f 2) && echo "Encrypted password is : $password" && docker run -d -p 6060:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password} || sudo docker run -d -p 8004:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --admin-password ${password} && echo -e "\n \n Portainer is running on port 6060. "; }
-
 function grafana() { rm -rf Grafana-Monitoring && apt install figlet -y && figlet Grafana Installation && git clone https://github.com/djay21/Grafana-Monitoring.git && cd Grafana-Monitoring && docker-compose up -d || sudo docker-compose up -d && echo -e "\n \n Grafana is running on port 6003................ " ; }
+

@@ -1,0 +1,13 @@
+name: "multi"
+environment: qa
+dynamodb:
+  table_names:
+    table_data: "abc"
+  index_name: "b-index-xyz"
+redis:
+  host: "abc.example.com:6380" 
+  helper: true
+events:
+  bus_name: "aws-event-bus-abc123"
+xray:
+  service_version: "1.3.0"
